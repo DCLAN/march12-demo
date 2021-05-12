@@ -14,4 +14,9 @@ workflows:
       - react/build:
           requires:
             - react/install
-
+  test-things:
+    jobs:
+      - react/install
+      - react/test:
+          requires:
+            - react/install
