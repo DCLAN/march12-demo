@@ -7,11 +7,16 @@ orbs:
 # Orchestrate or schedule a set of jobs
 workflows:
   # Name the workflow "welcome"
-  welcome:
+  build-things:
     # Run the welcome/run job in its own container
     jobs:
       - react/install
       - react/build:
           requires:
             - react/install
-
+  test-things:
+    jobs:
+      - react/install
+      - react/test:
+          requires:
+            - react/install
