@@ -5,23 +5,14 @@ orbs:
   # Declare a dependency on the welcome-orb
   react: thefrontside/react@0.2.0
 parameters:
-  to:
-    default: "wow"
-    type: string
-commands: # a reusable command with parameters
-  greeting:
-    parameters:
-      to:
-        default: "world"
-        type: string
-    steps:
-      - run: echo "Hello <<parameters.to>>"
+  parameter:
+    default: "world"
+    type: string  
 jobs:
   echo-things:
     executor: react/default 
     steps:
-      - greeting:
-          to: "Ada Lovelace"
+      - run: echo "Hello <<parameters.to>>"
 # Orchestrate or schedule a set of jobs
 workflows:
   # Name the workflow "welcome"
