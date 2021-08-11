@@ -10,12 +10,15 @@ parameters:
     type: string
   from:
     default: "the cloud"
-    type: string  
+    type: string
+  boo:
+    default: false
+    type: boolean
 jobs:
   echo-things:
     executor: react/default 
     steps:
-      - run: echo "Hello <<pipeline.parameters.to>> from <<pipeline.parameters.from>>"
+      - run: echo "Hello <<pipeline.parameters.to>> from <<pipeline.parameters.from>> and <<pipeline.parameters.boo>>"
 # Orchestrate or schedule a set of jobs
 workflows:
   # Name the workflow "welcome"
