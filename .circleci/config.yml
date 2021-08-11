@@ -7,12 +7,15 @@ orbs:
 parameters:
   to:
     default: "world"
+    type: string
+  from:
+    default: "the cloud"
     type: string  
 jobs:
   echo-things:
     executor: react/default 
     steps:
-      - run: echo "Hello <<pipeline.parameters.to>>"
+      - run: echo "Hello <<pipeline.parameters.to>> from <<pipeline.parameters.from>>"
 # Orchestrate or schedule a set of jobs
 workflows:
   # Name the workflow "welcome"
