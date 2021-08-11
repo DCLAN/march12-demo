@@ -14,7 +14,7 @@ commands: # a reusable command with parameters
       - run: echo "Hello <<parameters.to>>"
 jobs:
   echo-things:
-    machine: true
+    executor: react/default 
     steps:
       - greeting:
         to: "Ada Lovelace"
