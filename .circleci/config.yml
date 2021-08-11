@@ -17,7 +17,7 @@ jobs:
     executor: react/default 
     steps:
       - greeting:
-        to: "Ada Lovelace"
+          to: "Ada Lovelace"
 # Orchestrate or schedule a set of jobs
 workflows:
   # Name the workflow "welcome"
@@ -30,8 +30,4 @@ workflows:
             - react/install
   test-things:
     jobs:
-      - react/install
-      - react/test:
-          requires:
-            - react/install
       - echo-things
