@@ -4,6 +4,14 @@ version: 2.1
 orbs:
   # Declare a dependency on the welcome-orb
   react: thefrontside/react@0.2.0
+commands: # a reusable command with parameters
+  greeting:
+    parameters:
+      to:
+        default: "world"
+        type: string
+    steps:
+      - run: echo "Hello <<parameters.to>>"
 # Orchestrate or schedule a set of jobs
 workflows:
   # Name the workflow "welcome"
@@ -14,6 +22,8 @@ workflows:
       - react/build:
           requires:
             - react/install
+      - greeting
+        to: "Ada Lovelace"
   test-things:
     jobs:
       - react/install
