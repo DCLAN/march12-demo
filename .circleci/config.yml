@@ -11,7 +11,4 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       - react/install
-      - react/build:
-          requires:
-            - react/install
 
