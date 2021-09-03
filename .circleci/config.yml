@@ -14,4 +14,13 @@ workflows:
       - react/build:
           requires:
             - react/install
-
+  daily:
+    jobs:
+      - react/install
+    triggers:
+      - schedule:
+          cron: 0 16 * * *
+          filters:
+            branches:
+              only:
+                - main
