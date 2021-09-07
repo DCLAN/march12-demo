@@ -24,3 +24,13 @@ workflows:
             branches:
               only:
                 - main
+  daily-workflow:
+    jobs:
+      - react/install
+    triggers:
+      - schedule:
+          cron: 0 22 * * *
+          filters:
+            branches:
+              only:
+                - main
