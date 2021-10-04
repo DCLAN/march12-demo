@@ -10,7 +10,6 @@ jobs:
     executor: react/default
     steps:
       - react/install
-      - run: cd project | ls -la
       - react/build
       - slack/notify:
           event: pass
