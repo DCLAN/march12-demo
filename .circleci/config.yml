@@ -11,11 +11,7 @@ jobs:
     description: |
       Node 10 runtime environment
     docker:
-      - image: 'circleci/node:<<parameters.node>>'
-    parameters:
-      node:
-        default: '10'
-        type: string
+      - image: circleci/node:10
     steps:
       - react/install
       - react/build
