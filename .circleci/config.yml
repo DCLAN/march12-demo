@@ -32,6 +32,8 @@ workflows:
           requires:
             - react/install
       - example-job:
+          context:
+            - Slack
           requires:
           - react/build   
   daily:
