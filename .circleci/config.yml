@@ -11,7 +11,12 @@ jobs:
       # replace with your preferred image
       - image: cimg/base:stable
     steps:
-      - slack/notify
+      - slack/notify:
+          event: pass
+          template: success_tagged_deploy_1
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
   test-context:
     docker:
       # replace with your preferred image
