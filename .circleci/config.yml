@@ -9,6 +9,7 @@ jobs:
   example-job:
     executor: react/default
     steps:
+      - checkout
       - react/install
       - react/build
       - slack/notify:
