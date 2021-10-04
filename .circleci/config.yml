@@ -9,6 +9,7 @@ jobs:
   example-job:
     executor: react/default
     steps:
+      - run: ls -la
       - react/build
       - slack/notify:
           event: pass
