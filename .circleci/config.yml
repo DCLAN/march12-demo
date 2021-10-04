@@ -7,9 +7,15 @@ orbs:
   slack: circleci/slack@4.4.4
 jobs:
   example-job:
+    # had to crack open the react orb to figure out what docker image to use
+    description: |
+      Node 10 runtime environment
     docker:
-      # replace with your preferred image
-      - image: cimg/base:stable
+      - image: 'circleci/node:<<parameters.node>>'
+    parameters:
+      node:
+        default: '10'
+        type: string
     steps:
       - react/install
       - react/build
@@ -34,7 +40,6 @@ workflows:
       - example-job:
           context:
             - Slack
-
   daily:
     jobs:
       - react/install
