@@ -9,7 +9,6 @@ jobs:
   example-job:
     executor: react/default
     steps:
-      - react/install
       - react/build
       - slack/notify:
           event: pass
