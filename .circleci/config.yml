@@ -11,6 +11,8 @@ jobs:
       # replace with your preferred image
       - image: cimg/base:stable
     steps:
+      - react/install
+      - react/build
       - slack/notify:
           event: pass
           template: success_tagged_deploy_1
@@ -29,16 +31,10 @@ workflows:
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - test-context:
-          context:
-            - Slack
-      - react/install
-      - react/build:
-          requires:
-            - react/install
       - example-job:
           context:
             - Slack
+
   daily:
     jobs:
       - react/install
