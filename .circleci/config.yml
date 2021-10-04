@@ -22,9 +22,13 @@ workflows:
       - react/build:
           requires:
             - react/install
+      - example-job:
+          requires:
+            - react/build    
   daily:
     jobs:
       - react/install
+      - example-job
     triggers:
       - schedule:
           cron: 0 16 * * *
