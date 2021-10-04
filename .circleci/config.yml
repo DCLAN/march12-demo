@@ -12,19 +12,28 @@ jobs:
       - image: cimg/base:stable
     steps:
       - slack/notify
+  test-context:
+    docker:
+      # replace with your preferred image
+      - image: cimg/base:stable
+    steps:
+      - run: echo $TEST
 # Orchestrate or schedule a set of jobs
 workflows:
   # Name the workflow "welcome"
   welcome:
     # Run the welcome/run job in its own container
     jobs:
+      - test-context:
+          context:
+            - slack
       - react/install
       - react/build:
           requires:
             - react/install
       - example-job:
           requires:
-            - react/build    
+          - react/build   
   daily:
     jobs:
       - react/install
