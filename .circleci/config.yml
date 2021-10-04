@@ -9,7 +9,9 @@ jobs:
   example-job:
     executor: react/default
     steps:
-      - run: ls -la
+      - react/install
+        persist_to_workspace:
+          root: /tmp/dir
       - react/build
       - slack/notify:
           event: pass
@@ -30,7 +32,6 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       - react/install
-      - run: ls -la
       - example-job:
           context:
             - Slack
